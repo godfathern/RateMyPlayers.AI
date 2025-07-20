@@ -18,6 +18,8 @@ import ShareRoute from './ShareRoute';
 import ChatRoute from './ChatRoute';
 import Search from './Search';
 import Root from './Root';
+import FunFacts from './FunFacts';
+import PlayerChatPage from './PlayerChatPage';
 
 const AuthLayout = () => (
   <AuthContextProvider>
@@ -94,7 +96,11 @@ export const router = createBrowserRouter([
         element: <Root />,
         children: [
           {
-            index: true,
+            path : 'player-chat',
+            element : <PlayerChatPage />
+          },
+          {
+            index: true, //This means that when user go to exactly /, its gonna render Root. Later we should replac this by : player-chat
             element: <Navigate to="/c/new" replace={true} />,
           },
           {
@@ -105,6 +111,10 @@ export const router = createBrowserRouter([
             path: 'search',
             element: <Search />,
           },
+          {
+            path: 'fun',
+            element: <FunFacts />
+          }
         ],
       },
     ],
