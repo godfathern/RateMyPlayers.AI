@@ -76,7 +76,7 @@ export default function Root() {
   };
 
   const player = {
-    first_name: 'Lionel',
+    first_name: 'COncac',
     last_name: 'Messi',
     position: 'RW',
     weak_foot: 4,
@@ -110,9 +110,8 @@ export default function Root() {
               <div className="relative z-0 flex h-full w-full overflow-hidden">
                 <Nav navVisible={navVisible} setNavVisible={setNavVisible} />
                 <div className="relative flex h-full max-w-full flex-1 flex-col overflow-hidden">
-                  <div className="p-4 bg-gray-100">
                     <PlayerProfile player={player} />
-                  </div>
+
                   <MobileNav setNavVisible={setNavVisible} />
                   <Outlet context={{ navVisible, setNavVisible } satisfies ContextType} />
                 </div>

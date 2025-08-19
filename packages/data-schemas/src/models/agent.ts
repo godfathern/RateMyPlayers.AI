@@ -7,3 +7,5 @@ import type { IAgent } from '~/types';
 export function createAgentModel(mongoose: typeof import('mongoose')) {
   return mongoose.models.Agent || mongoose.model<IAgent>('Agent', agentSchema);
 }
+
+ 
