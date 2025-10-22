@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 import type { IPlayer } from '~/types';
 
-const playerSchema = new Schema<IPlayer>(
+const playerSchema: Schema<IPlayer> = new Schema(
   {
     first_name: {
       type: String,

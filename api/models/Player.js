@@ -47,10 +47,13 @@ const deletePlayer = async (playerId) => {
   return Player.findByIdAndDelete(playerId).lean();
 };
 
+const renamePlayer = () => {};
+
 module.exports = {
   createPlayer,
   getPlayerById,
   getPlayers,
   updatePlayer,
   deletePlayer,
+  renamePlayer,
 };

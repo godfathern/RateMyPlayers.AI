@@ -48,6 +48,7 @@ export enum QueryKeys {
   banner = 'banner',
   /* Memories */
   memories = 'memories',
+  players = 'players'
 }
 
 export enum MutationKeys {

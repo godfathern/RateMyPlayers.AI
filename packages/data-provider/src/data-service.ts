@@ -832,3 +832,8 @@ export const createMemory = (data: {
 }): Promise<{ created: boolean; memory: q.TUserMemory }> => {
   return request.post(endpoints.memories(), data);
 };
+
+
+export function createPlayer(payload:t.TPlayerRequest): Promise<t.TPlayerResponse>{
+  return request.post(endpoints.players(),payload);
+}

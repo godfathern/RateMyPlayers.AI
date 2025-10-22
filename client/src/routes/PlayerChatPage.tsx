@@ -5,8 +5,8 @@ import ChatForm from '../components/Chat/Input/ChatForm';
 
 const PlayerChatPage = () => {
   const player = {
-    first_name: 'LionConcacel',
-    last_name: 'Messi',
+    first_name: 'Harry',
+    last_name: 'Phan',
     position: 'RW',
     weak_foot: 4,
     skill_moves: 5,

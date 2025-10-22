@@ -9,6 +9,7 @@ import type {
   EModelEndpoint,
   TConversationTag,
   TAttachment,
+  TPlayer,
 } from './schemas';
 import type { SettingDefinition } from './generate';
 import type { TMinimalFeedback } from './feedback';
@@ -633,3 +634,10 @@ export type TBalanceResponse = {
   lastRefill?: Date;
   refillAmount?: number;
 };
+
+
+export type TPlayerRequest = Partial<
+  Omit<TPlayer, '_id' | 'createdAt' | 'updatedAt'>
+>;
+
+export type TPlayerResponse = TPlayer;

@@ -1026,3 +1026,18 @@ export const useAcceptTermsMutation = (
     onMutate: options?.onMutate,
   });
 };
+
+export const usePlayerMutation = () => {
+  const qc = useQueryClient();
+
+  return useMutation<t.TPlayerResponse, unknown, t.TPlayerRequest>({
+    mutationFn: (payload) => dataService.createPlayer(payload),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: [QueryKeys.players] });
+    },
+  });
+};
+
+
+
+

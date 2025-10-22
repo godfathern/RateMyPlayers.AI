@@ -8,8 +8,8 @@ const run = async () => {
     await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/LibreChat');
 
     const newPlayer = new Player({
-      first_name: 'COncac',
-      last_name: 'Messi',
+      first_name: 'Harry',
+      last_name: 'Phan',
       position: 'RW',
       weak_foot: 4,
       skill_moves: 5,

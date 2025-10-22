@@ -1,9 +1,14 @@
-import React from 'react';
-
+import React, { useRef, useState } from 'react';
+import { Button, OGDialog, OGDialogTemplate } from '../ui';
+import { FormProvider, useForm } from 'react-hook-form';
+import PlayerForm from './PlayerForm';
+import { useLocalize } from '~/hooks';
+import { usePlayerMutation } from '~/data-provider';
 export type Player = {
   first_name: string;
   last_name: string;
   position: string;
+  team: string;
   weak_foot: number;
   skill_moves: number;
   preferred_foot: string;
@@ -44,6 +49,13 @@ const StatBar = ({ label, value }: { label: string; value: number }) => (
 );
 
 const PlayerProfile = ({ player }: { player: Player }) => {
+  const onCreate = () => { };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const localize = useLocalize();
+  const mutation = usePlayerMutation();
+  const methods = useForm();
+
   return (
     <div className="w-full max-w-25xl mx-auto p-4 bg-white rounded-xl shadow-md">
       <h2 className="text-xl font-bold mb-4">
@@ -63,6 +75,7 @@ const PlayerProfile = ({ player }: { player: Player }) => {
         {/* Middle column: Info */}
         <div>
           <div className="mb-4 text-lg font-semibold">Position: {player.position}</div>
+          <div className="mb-4 text-lg font-semibold">Team: {player.team}</div>
           <div className="mb-2">Weak Foot: {renderStars(player.weak_foot)}</div>
           <div className="mb-2">Skill Moves: {renderStars(player.skill_moves)}</div>
           <div className="mb-1">Preferred Foot: {player.preferred_foot}</div>
@@ -98,6 +111,37 @@ const PlayerProfile = ({ player }: { player: Player }) => {
           <StatBar label="Defending" value={player.defending} />
           <StatBar label="Physicality" value={player.physicality} />
         </div>
+
+        <Button onClick={() => setIsModalOpen(true)}>+ Create Player</Button>
+            
+        <OGDialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <FormProvider {...methods}>
+            <OGDialogTemplate
+              title={ 'Create Player'}
+              showCloseButton={false}
+              className="w-11/12 md:max-w-3xl"
+              main={
+                <PlayerForm
+                  setOpen={setIsModalOpen}
+                  mutation={mutation}
+                  formRef={formRef}
+                />
+              }
+              buttons={
+                <Button
+                //   variant="submit"
+                //   type="submit"
+                //   // disabled={mutation.isLoading}
+                //   // onClick={handleSubmitForm}
+                //   className="text-white"
+                 >
+                 {localize('com_ui_save')}
+                </Button>
+              }
+            />
+          </FormProvider>
+        </OGDialog>
+
       </div>
     </div>
   );

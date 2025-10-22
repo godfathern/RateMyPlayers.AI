@@ -1189,3 +1189,40 @@ export const compactAgentsBaseSchema = tConversationSchema.pick({
 export const compactAgentsSchema = compactAgentsBaseSchema
   .transform((obj) => removeNullishValues(obj))
   .catch(() => ({}));
+
+
+export const tPlayerSchema = z.object({
+  _id: z.string().optional(),
+  first_name: z.string(),
+  last_name: z.string(),
+  position: z.string(),
+  team: z.string(),
+  weak_foot: z.number().min(1).max(5),
+  skill_moves: z.number().min(1).max(5),
+  preferred_foot: z.enum(['Left', 'Right']),
+  height: z.string(),  // keep as string (e.g. "170 cm")
+  weight: z.string(),  // keep as string (e.g. "72 kg")
+  alt_positions: z.string(), 
+
+
+  pace: z.number(),
+  acceleration: z.number(),
+  sprint_speed: z.number(),
+  shooting: z.number(),
+  passing: z.number(),
+  dribbling: z.number(),
+  defending: z.number(),
+  physicality: z.number(),
+
+  traits: z.array(
+    z.object({
+      name: z.string(),
+      description: z.string(),
+    })
+  ),
+
+  createdAt: z.string().optional(),
+  updatedAt: z.string().optional(),
+});
+
+export type TPlayer = z.infer<typeof tPlayerSchema>;
