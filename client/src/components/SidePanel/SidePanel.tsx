@@ -121,68 +121,7 @@ const SidePanel = ({
 
   return (
     <>
-      <div
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-        className="relative flex w-px items-center justify-center"
-      >
-        <NavToggle
-          navVisible={!isCollapsed}
-          isHovering={isHovering}
-          onToggle={toggleNavVisible}
-          setIsHovering={setIsHovering}
-          className={cn(
-            'fixed top-1/2',
-            (isCollapsed && (minSize === 0 || collapsedSize === 0)) || fullCollapse
-              ? 'mr-9'
-              : 'mr-16',
-          )}
-          translateX={false}
-          side="right"
-        />
-      </div>
-      {(!isCollapsed || minSize > 0) && !isSmallScreen && !fullCollapse && (
-        <ResizableHandleAlt withHandle className="bg-transparent text-text-primary" />
-      )}
-      <ResizablePanel
-        tagName="nav"
-        id="controls-nav"
-        order={hasArtifacts ? 3 : 2}
-        aria-label={localize('com_ui_controls')}
-        role="navigation"
-        collapsedSize={collapsedSize}
-        defaultSize={defaultSize}
-        collapsible={true}
-        minSize={minSize}
-        maxSize={40}
-        ref={panelRef}
-        style={{
-          overflowY: 'auto',
-          transition: 'width 0.2s ease, visibility 0s linear 0.2s',
-        }}
-        onExpand={() => {
-          setIsCollapsed(false);
-          localStorage.setItem('react-resizable-panels:collapsed', 'false');
-        }}
-        onCollapse={() => {
-          setIsCollapsed(true);
-          localStorage.setItem('react-resizable-panels:collapsed', 'true');
-        }}
-        className={cn(
-          'sidenav hide-scrollbar border-l border-border-light bg-background py-1 transition-opacity',
-          isCollapsed ? 'min-w-[50px]' : 'min-w-[340px] sm:min-w-[352px]',
-          (isSmallScreen && isCollapsed && (minSize === 0 || collapsedSize === 0)) || fullCollapse
-            ? 'hidden min-w-0'
-            : 'opacity-100',
-        )}
-      >
-        <Nav
-          resize={panelRef.current?.resize}
-          isCollapsed={isCollapsed}
-          defaultActive={defaultActive}
-          links={Links}
-        />
-      </ResizablePanel>
+
     </>
   );
 };

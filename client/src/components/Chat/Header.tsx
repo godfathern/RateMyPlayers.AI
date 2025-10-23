@@ -46,7 +46,7 @@ export default function Header() {
                 : 'pointer-events-none translate-x-[-100px] opacity-0'
             }`}
           >
-            <OpenSidebar setNavVisible={setNavVisible} />
+            {/* <OpenSidebar setNavVisible={setNavVisible} /> */}
             <HeaderNewChat />
           </div>
           <div
@@ -55,7 +55,7 @@ export default function Header() {
             } ${!navVisible ? 'translate-x-0' : 'translate-x-[-100px]'}`}
           >
             <ModelSelector startupConfig={startupConfig} />
-            {hasAccessToBookmarks === true && <BookmarkMenu />}
+            {/* {hasAccessToBookmarks === true && <BookmarkMenu />} */}
             {isSmallScreen && (
               <>
                 <ExportAndShareMenu
@@ -68,10 +68,10 @@ export default function Header() {
         </div>
         {!isSmallScreen && (
           <div className="flex items-center gap-2">
-            <ExportAndShareMenu
+            {/* <ExportAndShareMenu
               isSharedButtonEnabled={startupConfig?.sharedLinksEnabled ?? false}
-            />
-            <TemporaryChat />
+            /> */}
+            {/* <TemporaryChat /> */}
           </div>
         )}
       </div>
